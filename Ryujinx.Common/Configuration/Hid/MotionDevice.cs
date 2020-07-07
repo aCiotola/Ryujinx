@@ -38,7 +38,7 @@ namespace Ryujinx.Common.Configuration.Hid
             }
         }
 
-        public void Poll(PlayerIndex player, int slot)
+        public void Poll(PlayerIndex player, int slot, int sensitivity)
         {
             if (!ConfigurationState.Instance.Hid.EnableDsuClient)
             {
@@ -52,7 +52,7 @@ namespace Ryujinx.Common.Configuration.Hid
 
             var input = _motionSource.GetData((int)player, slot);
 
-            Gyroscope     = Truncate(input.Gyroscrope * GyroCoeff);
+            Gyroscope     = Truncate(input.Gyroscrope * GyroCoeff * sensitivity / 100);
             Accelerometer = Truncate(input.Accelerometer);
 
             Vector3 zNormal = Vector3.Normalize(Accelerometer * -1);

@@ -43,6 +43,11 @@ namespace Ryujinx.Common.Configuration.Hid
         public int DsuServerPort { get; set; }
 
         /// <summary>
+        /// Gyro Sensitivity
+        /// </summary>
+        public int Sensitivity { get; set; }
+        
+        /// <summary>
         /// Enable Motion Controls
         /// </summary>
         public bool EnableMotion { get; set; }

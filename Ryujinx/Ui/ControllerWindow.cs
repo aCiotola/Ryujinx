@@ -28,6 +28,7 @@ namespace Ryujinx.Ui
         [GUI] Adjustment   _controllerTriggerThreshold;
         [GUI] Adjustment   _slotNumber;
         [GUI] Adjustment   _altSlotNumber;
+        [GUI] Adjustment   _sensitivity;
         [GUI] CheckButton  _enableMotion;
         [GUI] CheckButton  _enableAltServer;
         [GUI] CheckButton  _mirrorInput;
@@ -288,6 +289,7 @@ namespace Ryujinx.Ui
             _enableMotion.Active              = false;
             _slotNumber.Value                 = 0;
             _altSlotNumber.Value              = 0;
+            _sensitivity.Value                = 100;
             _dsuServerHost.Buffer.Text        = "";
             _dsuServerPort.Buffer.Text        = "";
         }
@@ -328,7 +330,8 @@ namespace Ryujinx.Ui
                     _rSl.Label                 = keyboardConfig.RightJoycon.ButtonSl.ToString();
                     _rSr.Label                 = keyboardConfig.RightJoycon.ButtonSr.ToString();
                     _slotNumber.Value          = keyboardConfig.Slot;
-                    _altSlotNumber.Value       = keyboardConfig.AltSlot;
+                    _altSlotNumber.Value       = keyboardConfig.AltSlot;;
+                    _sensitivity.Value         = keyboardConfig.Sensitivity;
                     _enableMotion.Active       = keyboardConfig.EnableMotion;
                     _mirrorInput.Active        = keyboardConfig.MirrorInput;
                     _enableAltServer.Active    = keyboardConfig.UseAltServer;
@@ -371,6 +374,7 @@ namespace Ryujinx.Ui
                     _controllerTriggerThreshold.Value = controllerConfig.TriggerThreshold;
                     _slotNumber.Value                 = controllerConfig.Slot;
                     _altSlotNumber.Value              = controllerConfig.AltSlot;
+                    _sensitivity.Value                = controllerConfig.Sensitivity;
                     _enableMotion.Active              = controllerConfig.EnableMotion;
                     _enableAltServer.Active           = controllerConfig.UseAltServer;
                     _mirrorInput.Active               = controllerConfig.MirrorInput;
@@ -458,6 +462,7 @@ namespace Ryujinx.Ui
                     MirrorInput   = _mirrorInput.Active,
                     Slot          = (int)_slotNumber.Value,
                     AltSlot       = (int)_slotNumber.Value,
+                    Sensitivity   = (int)_sensitivity.Value,
                     DsuServerHost = _dsuServerHost.Buffer.Text,
                     DsuServerPort = int.Parse(_dsuServerPort.Buffer.Text)
                 };
@@ -538,6 +543,7 @@ namespace Ryujinx.Ui
                     MirrorInput   = _mirrorInput.Active,
                     Slot          = (int)_slotNumber.Value,
                     AltSlot       = (int)_slotNumber.Value,
+                    Sensitivity   = (int)_sensitivity.Value,
                     DsuServerHost = _dsuServerHost.Buffer.Text,
                     DsuServerPort = int.Parse(_dsuServerPort.Buffer.Text)
                 };
@@ -803,6 +809,7 @@ namespace Ryujinx.Ui
                         MirrorInput   = false,
                         Slot          = 0,
                         AltSlot       = 0,
+                        Sensitivity   = 100,
                         DsuServerHost = "",
                         DsuServerPort = 0
                     };
@@ -855,6 +862,7 @@ namespace Ryujinx.Ui
                         MirrorInput   = false,
                         Slot          = 0,
                         AltSlot       = 0,
+                        Sensitivity   = 100,
                         DsuServerHost = "",
                         DsuServerPort = 0
                     };
